@@ -13,7 +13,6 @@ const Index = () => {
   const [viewMode, setViewMode] = useState<ViewMode>("donor");
   const [isCircularLayout, setIsCircularLayout] = useState(true);
 
-  // Get compatible blood types based on selection and mode
   const compatibleTypes = useMemo(() => 
     getCompatibleTypes(selectedBloodType, viewMode),
     [selectedBloodType, viewMode]
@@ -25,12 +24,22 @@ const Index = () => {
     const centerX = window.innerWidth > 768 ? 400 : window.innerWidth / 2;
     const centerY = window.innerWidth > 768 ? 300 : 350;
     
-    // The selected blood type will be in the center
+    // Initialize positions with center position for selected type
     const result: Record<BloodType, {x: number, y: number}> = {
-      [selectedBloodType]: { x: centerX, y: centerY }
+      "A+": { x: 0, y: 0 },
+      "A-": { x: 0, y: 0 },
+      "B+": { x: 0, y: 0 },
+      "B-": { x: 0, y: 0 },
+      "AB+": { x: 0, y: 0 },
+      "AB-": { x: 0, y: 0 },
+      "O+": { x: 0, y: 0 },
+      "O-": { x: 0, y: 0 }
     };
+
+    // Set the selected blood type in the center
+    result[selectedBloodType] = { x: centerX, y: centerY };
     
-    // Position the other blood types in a circle or grid around the center
+    // Position other blood types around the center
     const otherTypes = allBloodTypes.filter(type => type !== selectedBloodType);
     
     if (isCircularLayout) {
@@ -52,7 +61,7 @@ const Index = () => {
       let col = 0;
       
       otherTypes.forEach((type, index) => {
-        // Skip the center position
+        // Skip the center position if needed
         if (row === 1 && col === 1) {
           col++;
           if (col >= cols) {
