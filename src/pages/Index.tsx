@@ -36,10 +36,10 @@ const Index = () => {
       <VisualizerHeader
         selectedBloodType={selectedBloodType}
         viewMode={viewMode}
-        isCircularLayout={false} // We no longer use this but keep it for compatibility
+        isCircularLayout={false}
         onSelectBloodType={handleSelectBloodType}
         onToggleViewMode={() => setViewMode(viewMode === "donor" ? "recipient" : "donor")}
-        onToggleLayout={() => {}} // We no longer use this but keep it for compatibility
+        onToggleLayout={() => {}}
       />
 
       <VisualizerExplanation
@@ -48,7 +48,7 @@ const Index = () => {
         compatibleTypes={compatibleTypes}
       />
 
-      <div className="vertical-visualizer flex flex-col items-center w-full max-w-3xl">
+      <div className="horizontal-visualizer flex flex-col items-center w-full max-w-5xl">
         <BloodPack isActive={isAnimating} />
         
         <VerticalHierarchy

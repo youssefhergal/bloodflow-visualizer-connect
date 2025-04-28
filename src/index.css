@@ -67,6 +67,34 @@
   }
 }
 
+@keyframes flowRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes flowDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -88,20 +116,6 @@
   }
 }
 
-@keyframes flowDown {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
 .blood-flow {
   stroke-dasharray: 15, 5;
   animation: flowBlood 15s linear infinite;
@@ -109,6 +123,10 @@
 
 .blood-drop {
   animation: flowDown 1s ease-out forwards;
+}
+
+.horizontal-tube .blood-drop {
+  animation: flowRight 1s ease-out forwards;
 }
 
 .person-fade-in {
@@ -129,8 +147,11 @@
   min-height: 800px;
 }
 
+.horizontal-tube {
+  min-width: 100%;
+}
+
 .person-container {
-  width: 100%;
   margin: 20px 0;
 }
 
