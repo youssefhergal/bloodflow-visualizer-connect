@@ -25,6 +25,11 @@ const VisualizerExplanation: React.FC<VisualizerExplanationProps> = ({
           ? compatibleTypes.join(", ") 
           : "No compatible blood types"}
       </p>
+      <p className="text-sm text-gray-400 mt-4">
+        {viewMode === "donor" 
+          ? "Blood flows down to compatible recipients" 
+          : "Blood flows down from compatible donors"}
+      </p>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Toggle } from "@/components/ui/toggle";
 import { ArrowDown, ArrowUp } from "lucide-react";
 import BloodTypeSelector from "@/components/BloodTypeSelector";
 import { BloodType, ViewMode } from "@/utils/bloodTypeCompatibility";
@@ -9,19 +8,17 @@ import { BloodType, ViewMode } from "@/utils/bloodTypeCompatibility";
 interface VisualizerHeaderProps {
   selectedBloodType: BloodType;
   viewMode: ViewMode;
-  isCircularLayout: boolean;
+  isCircularLayout: boolean; // Keep for compatibility
   onSelectBloodType: (type: BloodType) => void;
   onToggleViewMode: () => void;
-  onToggleLayout: (value: boolean) => void;
+  onToggleLayout: (value: boolean) => void; // Keep for compatibility
 }
 
 const VisualizerHeader: React.FC<VisualizerHeaderProps> = ({
   selectedBloodType,
   viewMode,
-  isCircularLayout,
   onSelectBloodType,
   onToggleViewMode,
-  onToggleLayout,
 }) => {
   return (
     <div className="w-full bg-white shadow-sm mb-8">
@@ -51,13 +48,6 @@ const VisualizerHeader: React.FC<VisualizerHeaderProps> = ({
               </>
             )}
           </Button>
-          <Toggle 
-            pressed={isCircularLayout} 
-            onPressedChange={onToggleLayout}
-            aria-label="Toggle layout"
-          >
-            {isCircularLayout ? "Circle" : "Grid"}
-          </Toggle>
         </div>
       </div>
     </div>

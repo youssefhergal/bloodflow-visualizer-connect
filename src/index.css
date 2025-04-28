@@ -88,9 +88,27 @@
   }
 }
 
+@keyframes flowDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 .blood-flow {
   stroke-dasharray: 15, 5;
   animation: flowBlood 15s linear infinite;
+}
+
+.blood-drop {
+  animation: flowDown 1s ease-out forwards;
 }
 
 .person-fade-in {
@@ -99,4 +117,23 @@
 
 .pulse {
   animation: pulse 1s infinite;
+}
+
+.transition-height {
+  transition-property: height;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1000ms;
+}
+
+.vertical-tube {
+  min-height: 800px;
+}
+
+.person-container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.horizontal-tube {
+  transition: background-color 0.5s ease;
 }
