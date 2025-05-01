@@ -1,7 +1,6 @@
-
 import React, { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Html5, Javascript } from "lucide-react";
+import { Monitor, FileCode } from "lucide-react";
 import TechIcon from "@/components/common/TechIcon";
 
 const About = () => {
