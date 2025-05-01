@@ -39,6 +39,17 @@
     --donor-color: 351 83% 58%;      /* #ea384c */
     --recipient-color: 197 76% 49%;  /* #1EAEDB */
     --inactive-color: 240 5% 84%;    /* #D4D4D8 */
+
+    /* BloodLink theming variables */
+    --clr-surface-a0: 240 10% 3.9%;  /* Darkest bg */
+    --clr-surface-a10: 240 10% 8%;   /* Dark bg */
+    --clr-surface-a20: 240 10% 12%;  /* Medium dark bg */
+    
+    --clr-primary-a10: 351 83% 58%;  /* Soft highlight */
+    --clr-primary-a30: 351 83% 68%;  /* Medium highlight */
+    --clr-primary-a50: 351 83% 78%;  /* Strong highlight */
+    
+    --clr-light-a0: 0 0% 98%;        /* Light text */
   }
 
   .dark {
@@ -116,6 +127,48 @@
   }
 }
 
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
 .blood-flow {
   stroke-dasharray: 15, 5;
   animation: flowBlood 15s linear infinite;
@@ -135,6 +188,22 @@
 
 .pulse {
   animation: pulse 1s infinite;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid hsl(var(--clr-primary-a30));
+  width: 0;
+  animation: typing 3.5s steps(30) 1s forwards, blink 1s step-end infinite;
+}
+
+.glitch-animation {
+  animation: glitch 1s infinite;
 }
 
 .transition-height {
@@ -157,4 +226,48 @@
 
 .horizontal-tube {
   transition: background-color 0.5s ease;
+}
+
+/* Card hover animations */
+.card-hover {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(var(--clr-primary-a10), 0.3);
+}
+
+/* Button animations */
+.button-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.button-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(var(--clr-primary-a30), 0.5);
+}
+
+.button-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-glow:hover::after {
+  opacity: 1;
 }

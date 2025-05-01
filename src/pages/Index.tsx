@@ -32,7 +32,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-50">
+    <div className="min-h-[calc(100vh-180px)] flex flex-col items-center bg-[hsl(var(--clr-surface-a10))]">
+      <h1 className="text-3xl font-bold text-center mb-6 text-[hsl(var(--clr-primary-a30))]">
+        Blood Type Compatibility Visualizer
+      </h1>
+      
       <VisualizerHeader
         selectedBloodType={selectedBloodType}
         viewMode={viewMode}
@@ -59,7 +63,7 @@ const Index = () => {
         />
       </div>
       
-      <footer className="w-full p-4 text-center text-gray-500 mt-auto">
+      <footer className="w-full p-4 text-center text-gray-400 mt-auto">
         <p className="text-sm">
           Click on any figure to select that blood type
         </p>
